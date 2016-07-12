@@ -10,9 +10,8 @@ resources:
   - name: spotlight-git
     type: git
     source:
-      uri: git@github.com:pivotal-sg/spotlight.git
+      uri: https://github.com/pivotal-sg/spotlight.git
       branch: develop
-      private_key: {{ssh-private-key}}
   - name: build-cache
     type: rsync-resource
     source:
