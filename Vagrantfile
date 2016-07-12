@@ -13,7 +13,6 @@ Vagrant.configure(2) do |config|
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
   config.vm.box = "concourse/lite"
-  config.vm.box_version = '1.2.0'
   # config.vm.box = "ubuntu/trusty64"
 
   # Disable automatic box update checking. If you disable this, then
@@ -67,7 +66,14 @@ Vagrant.configure(2) do |config|
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
   config.vm.provision "shell", inline: <<-SHELL
-    sudo apt-get update
-    sudo apt-get install -y git-core
+    apt-get update
+    apt-get install -y git-core
+    su -l -c "psql -c 'ALTER USER vagrant CREATEDB'" postgres
+    echo "listen_addresses = '*'" >> /etc/postgresql/9.3/main/postgresql.conf
+    echo 'host    all             all             10.254.0.0/8            md5' >> /etc/postgresql/9.3/main/pg_hba.conf
+    service postgresql restart
+    mkdir -p /home/vagrant/caches/dummy
+    chown vagrant:vagrant -R /home/vagrant/caches
+    touch /home/vagrant/caches/dummy/empty.txt
   SHELL
 end
