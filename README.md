@@ -6,8 +6,13 @@
 
 1. Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads).
 2. Install [Vagrant](https://www.vagrantup.com).
+3. Check out this Git repository:
 
-## Setup
+	```bash
+	git clone https://github.com/pivotal-sg/concourse-demo.git
+	```
+
+## Setting up Concourse CI - Lite
 
 1. Start Concourse-Lite
 
@@ -91,9 +96,9 @@ vagrant up
 	mv fly /usr/local/bin
 	```
 
-## Applying a Build Pipeline
+## Building a sample Rails app
 
-1. Apply new pipeline:
+1. Add new pipeline:
 
 	```bash
 	fly -t lite set-pipeline -p spotlight -c spotlight.yml --load-vars-from credentials.yml
