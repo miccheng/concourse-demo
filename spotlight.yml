@@ -49,6 +49,6 @@ jobs:
           - name: bundle
         run:
           path: spotlight-git/run-test-in-concourse.sh
-
-    - put: build-cache
-      params: { "sync_dir" : "bundle" }
+      ensure:
+        put: build-cache
+        params: { "sync_dir" : "bundle" }
