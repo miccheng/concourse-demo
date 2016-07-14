@@ -128,4 +128,4 @@ vagrant up
 
 * [Hello, world!](https://concourse.ci/hello-world.html)
 * [Official Tutorials](https://concourse.ci/tutorials.html)
-* [Start and Wayne Concourse Tutorial](https://github.com/starkandwayne/concourse-tutorial)
+* [Stark and Wayne Concourse Tutorial](https://github.com/starkandwayne/concourse-tutorial)
